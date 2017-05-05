@@ -11,24 +11,21 @@ class Game extends React.Component {
   }
 
   generateRandomBoard() {
+    const diceCombinations = [
+      "AAEEGN", "ABBJOO", "ACHOPS", "AFFKPS",
+      "AOOTTW", "CIMOTU", "DEILRX", "DELRVY",
+      "DISTTY", "EEGHNW", "EEINSU", "EHRTVW",
+      "EIOSST", "ELRTTY", "HIMNUQ", "HLNNRZ"
+    ]
+
+    /* TOOD: Implement a random algorithm */
+
     return [
       'ABCD',
       'ABCD',
       'ABCD',
       'ABCD'
     ]
-
-   /* const diceCombinations = [
-      "AAEEGN", "ABBJOO", "ACHOPS", "AFFKPS",
-      "AOOTTW", "CIMOTU", "DEILRX", "DELRVY",
-      "DISTTY", "EEGHNW", "EEINSU", "EHRTVW",
-      "EIOSST", "ELRTTY", "HIMNUQu", "HLNNRZ"
-    ];
-    let charOne = "";
-    for (let i=0; i<diceCombinations[0].length; i++){
-      charOne = dices[0][Math.floor(Math.random() * 6)];
-    }
-    return charOne;*/
   }
 
   render () {

@@ -1,5 +1,6 @@
 import React from 'react'
 import Board from './Board'
+import _ from 'lodash'
 
 class Game extends React.Component {
   constructor (props) {
@@ -18,22 +19,12 @@ class Game extends React.Component {
       'EIOSST', 'ELRTTY', 'HIMNUQ', 'HLNNRZ'
     ]
 
-    /* TOOD: Implement a random algorithm */
-      // taking one char from string
-    let char = ''
-    let j = 0
-    for (let i = diceCombinations[j]; j < diceCombinations.length; j++) {
-      char += diceCombinations[j][Math.floor(Math.random() * diceCombinations[j].length)]
-    }
-      // shuffle characters
-    let shuffled = char.split('').sort(function () { return 0.5 - Math.random() }).join('')
-      // spliting shuffled string into segment of 4
-    let chunks = []
+    const randomPickCharacter = string => string[Math.floor(Math.random() * string.length)]
 
-    for (let i = 0; i < shuffled.length; i += 4) {
-      chunks.push(shuffled.substring(i, i + 4))
-    }
-    return chunks
+    const diceLayout = diceCombinations.map(randomPickCharacter)
+    const shuffledArray = _.shuffle(diceLayout)
+    return _.chunk(shuffledArray, 4)
+      .map(characters => characters.join(''))
   }
 
   render () {

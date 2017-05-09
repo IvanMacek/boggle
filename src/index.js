@@ -8,7 +8,7 @@ class App extends React.Component {
     return (
       <div className='App'>
         <div className='App-header'>
-          <h2>Boggle</h2>
+          <h1> Boggle </h1>
         </div>
         <div className='main-game'>
           <Game />

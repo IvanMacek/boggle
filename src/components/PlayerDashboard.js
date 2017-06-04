@@ -51,10 +51,7 @@ class PlayerDashboard extends React.Component {
     handleChange = (e) => {
         const value = e.target.value.toUpperCase()
         this.setState(() => {
-            console.log(value)
-            return {
-                value: value
-            }
+            return { value }
         });
     }
 
@@ -77,9 +74,9 @@ class PlayerDashboard extends React.Component {
             <div className='inputBox'>
                 <input type='text' placeholder='Enter a term...' value={this.state.value} onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
                 <ul> Words:
-                {this.state.list.map(function (name, index) {
-                        return <li key={index}>{name}</li>;
-                    })}
+                {this.state.list.map((name, index) => 
+                    <li key={index}>{name}</li>
+                )}
                 </ul>
             </div>
         )

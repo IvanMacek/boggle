@@ -1,6 +1,7 @@
 import React from 'react'
 import Board from './Board'
 import PlayerDashboard from './PlayerDashboard'
+import Timer from './Timer'
 import _ from 'lodash'
 
 class Game extends React.Component {
@@ -8,8 +9,7 @@ class Game extends React.Component {
     super(props)
 
     this.state = {
-      board: this.generateRandomBoard(),
-      playerBoard: this.isStringOnTheBoard()
+      board: this.generateRandomBoard()
     }
   }
 
@@ -29,18 +29,17 @@ class Game extends React.Component {
       .map(characters => characters.join(''))
   }
 
-  isStringOnTheBoard () {
-
-  }
-
   render () {
     return (
-      <div className='Game'>
+      <div className='game'>
         <div className='game-board'>
+          <p className='playerOne'> Player One </p>
           <Board configuration={this.state.board} />
-          <PlayerDashboard inputField={this.state.playerBoard} />
+          <PlayerDashboard configuration={this.state.board} />
+          <Timer />
         </div>
       </div>
+
     )
   }
 }

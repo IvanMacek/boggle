@@ -8,7 +8,7 @@ class Board extends React.Component {
         {configuration.map((row, index) =>
           <div key={index} className='board-row'>
             {row.split('').map((character, index) =>
-              <button key={index} className='Dice'>{character}</button>)
+              <button key={index} className='dice'>{character}</button>)
             }
           </div>)
         }

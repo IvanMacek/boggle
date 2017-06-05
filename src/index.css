@@ -64,28 +64,3 @@ ul {
   font-size: 60px;
   margin-top: 40px;
 }
-
-.game-board {
-  position:relative;
-  width: 800px;
-  height: 800px;
-}
-
-.game-board-second {
-  position:absolute;
-  width: 800px;
-  height: 800px;
-  right: 0.1px;
-  top: 160px;
-  left: 700px;
-}
-
-.playerOne {
-  font-family: 'Archivo Black', sans-serif;
-  font-size: 20px;
-}
-
-.playerTwo {
-  font-family: 'Archivo Black', sans-serif;
-  font-size: 20px;
-}

@@ -8,7 +8,9 @@ class PlayerDashboard extends React.Component {
         this.state = {
             value: '',
             list: []
-        };
+        }
+        this.handleChange = this.handleChange.bind(this)
+        this.handleKeyPress = this.handleKeyPress.bind(this)
     }
 
     containsWord(word) {
@@ -47,15 +49,14 @@ class PlayerDashboard extends React.Component {
         return false
     }
 
-
-    handleChange = (e) => {
+    handleChange(e) {
         const value = e.target.value.toUpperCase()
         this.setState(() => {
             return { value }
-        });
+        })
     }
 
-    handleKeyPress = (e) => {
+    handleKeyPress(e) {
         if (e.key === 'Enter') {
             const inputValue = this.state.value
             if (this.containsWord(inputValue) === true) {
@@ -64,24 +65,24 @@ class PlayerDashboard extends React.Component {
                         value: '',
                         list: _.concat(prevState.list, inputValue)
                     }
-                })
+                });
             }
         }
     }
 
+
     render() {
         return (
             <div className='inputBox'>
-                <input type='text' placeholder='Enter a term...' value={this.state.value} onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
+                <input className='box' type='text' placeholder='Enter a term...' value={this.state.value} onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
                 <ul> Words:
-                {this.state.list.map((name, index) => 
-                    <li key={index}>{name}</li>
-                )}
+                {this.state.list.map((name, index) =>
+                        <li key={index}>{name}</li>
+                    )}
                 </ul>
             </div>
         )
     }
 }
-
 
 export default PlayerDashboard

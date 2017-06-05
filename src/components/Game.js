@@ -33,7 +33,6 @@ class Game extends React.Component {
     return (
       <div className='game'>
         <div className='game-board'>
-          <p className='playerOne'> Player One </p>
           <Board configuration={this.state.board} />
           <PlayerDashboard configuration={this.state.board} />
           <Timer />

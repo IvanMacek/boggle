@@ -1,5 +1,7 @@
 import React from 'react'
 import Board from './Board'
+import PlayerDashboard from './PlayerDashboard'
+import Timer from './Timer'
 import _ from 'lodash'
 
 class Game extends React.Component {
@@ -29,11 +31,14 @@ class Game extends React.Component {
 
   render () {
     return (
-      <div className='Game'>
+      <div className='game'>
         <div className='game-board'>
           <Board configuration={this.state.board} />
+          <PlayerDashboard configuration={this.state.board} />
+          <Timer />
         </div>
       </div>
+
     )
   }
 }

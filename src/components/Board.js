@@ -5,7 +5,9 @@ class Board extends React.Component {
     super(props)
 
     this.state = {
-      selectedBlocks: []
+      selectedBlocks: [],
+      wordClick: [],
+      wordHover: []
     }
   }
 
@@ -21,6 +23,7 @@ class Board extends React.Component {
         })
       }
     })
+    this.state.wordClick.push(configuration[row][column])
   }
 
   isBlockSelected(row, column) {
@@ -31,14 +34,37 @@ class Board extends React.Component {
     return 'dice' + (this.isBlockSelected(row, column) ? ' selected' : '')
   }
 
+  onHover(row, column) {
+    const { configuration } = this.props
+    if(this.state.wordClick.length === 1) {
+      this.setState(oldState => {
+      return {
+        selectedBlocks: oldState.selectedBlocks.concat({
+          row,
+          column,
+          value: configuration[row][column]
+        })
+      }
+    })
+      this.state.wordHover.push(configuration[row][column])
+    }  
+  }
+
+
   render() {
     const { configuration } = this.props
+    let clickHover = this.state.wordClick.concat(this.state.wordHover)
+    let term = clickHover.join('')
+    console.log(term)
     return (
       <div>
         {configuration.map((row, rowIndex) =>
           <div key={rowIndex} className='board-row'>
             {row.split('').map((character, columnIndex) =>
-              <button key={columnIndex} className={this.blockClassName(rowIndex, columnIndex)} onClick={() => this.blockClick(rowIndex, columnIndex)}>{character}</button>)
+              <button key={columnIndex} className={this.blockClassName(rowIndex, columnIndex)} 
+                onClick={() => this.blockClick(rowIndex, columnIndex)} 
+                onMouseDown={() => this.onHover(rowIndex, columnIndex)}
+                onMouseOver={() => this.onHover(rowIndex, columnIndex)}>{character}</button>)      
             }
           </div>)
         }
